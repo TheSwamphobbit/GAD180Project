@@ -62,7 +62,7 @@ public class PlayerInventory : MonoBehaviour
 
             // Set a small rotation on the object so it wont "stand up" when hitting the ground
             Vector3 randomRotation = new Vector3(Random.Range(0f, 5f), Random.Range(-3f, 3f), Random.Range(-3f, 3f));
-            activeObject.transform.rotation = Quaternion.Euler(randomRotation);
+            activeObject.transform.rotation = transform.rotation * Quaternion.Euler(randomRotation);
 
             activeRigidBody = activeObject.transform.GetComponent<Rigidbody>();
             // Activate gravity on the game object that is dropped
