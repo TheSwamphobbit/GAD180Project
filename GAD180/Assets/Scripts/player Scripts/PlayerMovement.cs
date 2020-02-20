@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
         // If the boolen movementAllowed is set to true, get move the player
         if (movementAllowed)
         {
+            // Check if player is running
+            if (Input.GetButton("Sprint"))movementSpeed = runSpeed;
+            else movementSpeed = walkSpeed;
+
             // If the player is on the ground, listen for keyboard movement
             if (notGroundedFrameCount <= 6)
             {
