@@ -56,9 +56,10 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                playerInventory.Drop();
+                playerInventory.Throw();
             }
             
-        }
-    }
+        } // Input Fire2
+
+    } // Update()
 }
