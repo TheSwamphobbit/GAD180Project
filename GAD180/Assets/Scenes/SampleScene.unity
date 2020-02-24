@@ -248,6 +248,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &681616439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6255018162272640369, guid: 5548776f735781944b84d774392a0799,
+    type: 3}
+  m_PrefabInstance: {fileID: 6255018162692637824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &693826236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4163349446567726901, guid: 7b898468cceceb447ba6c46236fdd93e,
@@ -440,6 +446,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+--- !u!1 &822345872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822345873}
+  m_Layer: 2
+  m_Name: Player Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &822345873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822345872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 681616439}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> master
+>>>>>>> master
 --- !u!1001 &949149964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,7 +742,7 @@ GameObject:
   - component: {fileID: 1338720218}
   - component: {fileID: 1338720217}
   - component: {fileID: 1338720216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1114,7 +1156,7 @@ PrefabInstance:
     - target: {fileID: 6255018162272640369, guid: 5548776f735781944b84d774392a0799,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.125
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 6255018162272640369, guid: 5548776f735781944b84d774392a0799,
         type: 3}
@@ -1161,6 +1203,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    - target: {fileID: 6255018162272640370, guid: 5548776f735781944b84d774392a0799,
+        type: 3}
+      propertyPath: maxAirbornFrames
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255018162272640370, guid: 5548776f735781944b84d774392a0799,
+        type: 3}
+      propertyPath: playerFeet
+      value: 
+      objectReference: {fileID: 822345873}
+    - target: {fileID: 6255018162272640370, guid: 5548776f735781944b84d774392a0799,
+        type: 3}
+      propertyPath: groundedRaycastDistance
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255018162272640370, guid: 5548776f735781944b84d774392a0799,
+        type: 3}
+      propertyPath: runSpeed
+      value: 6
+      objectReference: {fileID: 0}
+=======
+>>>>>>> master
+>>>>>>> master
     - target: {fileID: 6255018162272640371, guid: 5548776f735781944b84d774392a0799,
         type: 3}
       propertyPath: interactionDistance
