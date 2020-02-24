@@ -446,6 +446,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &822345872
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +477,8 @@ Transform:
   m_Father: {fileID: 681616439}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> master
 --- !u!1001 &949149964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1197,6 +1200,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6255018162272640370, guid: 5548776f735781944b84d774392a0799,
         type: 3}
       propertyPath: maxAirbornFrames
@@ -1217,6 +1221,8 @@ PrefabInstance:
       propertyPath: runSpeed
       value: 6
       objectReference: {fileID: 0}
+=======
+>>>>>>> master
     - target: {fileID: 6255018162272640371, guid: 5548776f735781944b84d774392a0799,
         type: 3}
       propertyPath: interactionDistance
