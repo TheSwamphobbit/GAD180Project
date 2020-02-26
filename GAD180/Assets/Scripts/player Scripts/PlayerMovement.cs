@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded, rotationLimitSet;
     // Set layermask for the grounded check
     int layerMask = 1 << 9;
+    private TimeManager timeManager;
+
+    public float playerMagnitude;
 
 
 
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        timeManager = GetComponent<TimeManager>();
         movementSpeed = walkSpeed;
         // Luck cursor and make it invicible
         Cursor.lockState = CursorLockMode.Locked;
@@ -48,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(playerFeet.position, transform.TransformDirection(-Vector3.up), out hit, groundedRaycastDistance, layerMask))
             {
-                print(hit.distance);
+                //print(hit.distance);
 
                 // Set grounded to true and reset the rotation limits
                 grounded = true;
@@ -61,16 +65,17 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetButton("Sprint")) movementSpeed = runSpeed;
                 else movementSpeed = walkSpeed;
 
+                // If player is moving in both x and z direction, reduce the speed to compensate for 2 axis movement
+                if (keyboardInput.x != 0 && keyboardInput.z != 0)
+                {
+                    movementSpeed = movementSpeed / Mathf.Sqrt(2);
+                }
+
                 // Mulitply the inputs with movementSpeed
                 keyboardInput *= movementSpeed;
                 // Transform direction so that the inputs are relative to the direction the player i facing
                 keyboardInput = transform.TransformDirection(keyboardInput);
 
-                //Adjust speed if player is moving vrtically and horizontally at the same time
-                if (keyboardInput.x != 0 && keyboardInput.z != 0)
-                {
-                    keyboardInput /= Mathf.Sqrt(2);
-                }
                 if (Input.GetButton("Jump"))
                 {
                     keyboardInput.y = jumpSpeed;
@@ -88,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Move player
         characterController.Move(keyboardInput * Time.deltaTime);
+        //print(characterController.velocity.magnitude);
 
         //Apply gravity
         keyboardInput.y -= gravitySpeed * Time.deltaTime;
@@ -96,8 +102,14 @@ public class PlayerMovement : MonoBehaviour
         {
             RotatePlayer();
         }
+        // Time freeze effects
+        timeManager.SlowMotionEffect();
+
         // Change between locked and unlocked cursor
         CheckCursorState();
+
+        //Set playerMagnitude (testing purposes)
+        playerMagnitude = characterController.velocity.magnitude;
     }
     void CheckCursorState()
     {
