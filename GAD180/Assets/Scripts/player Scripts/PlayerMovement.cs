@@ -85,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
             else 
             { 
                 grounded = false;
-                
             }
 
             
@@ -127,6 +126,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    void RotationLimit()
+    {
+
+        
+        // Get the current rotation
+        currentRotation = transform.rotation.eulerAngles;
+        // Determine rotationlimits
+        rotationLimit = new Vector2(currentRotation.y - rotateAirbornLimits, currentRotation.y + rotateAirbornLimits);
+        // If the rotationlimits are above 180 degrees. Reduce 360 to get the right value (-30 insted of 330, -70 instead of 290 and so on)
+        if (rotationLimit.x > 180) rotationLimit.x -= 360;
+        if (rotationLimit.y > 180) rotationLimit.y -= 360;
+        // Set rotationLimitSet to true so the limits are not set again the next frame
+        rotationLimitSet = true;
+       
+    }
         
     void RotatePlayer()
     {
@@ -137,25 +151,19 @@ public class PlayerMovement : MonoBehaviour
         lookAngles.y += mouseInput.y * mouseRotationSpeed;
         lookAngles.x = Mathf.Clamp(lookAngles.x, lookLimits.x, lookLimits.y);
 
-        // If themplayer is not grounded and a rotationlimit is not set, set limits
-        if(!grounded && !rotationLimitSet)
-        {
-            // Get the current rotation
-            currentRotation = transform.rotation.eulerAngles;
-            // Determine rotationlimits
-            rotationLimit = new Vector2(currentRotation.y - rotateAirbornLimits, currentRotation.y + rotateAirbornLimits);
-            // If the rotationlimits are above 180 degrees. Reduce 360 to get the right value (-30 insted of 330, -70 instead of 290 and so on)
-            if (rotationLimit.x > 180) rotationLimit.x -= 360;
-            if (rotationLimit.y > 180) rotationLimit.y -= 360;
-            // Set rotationLimitSet to true so the limits are not set again the next frame
-            rotationLimitSet = true;
-        }
+        
+
         // If the player is not grounded
         if(!grounded)
         {
-            // Set rotationlimits
-            lookAngles.y = Mathf.Clamp(lookAngles.y, rotationLimit.x, rotationLimit.y);
-            //print(rotationLimit.x + " " + rotationLimit.y);
+            // If rotaiton limit airborn is not set to 0, use rotaitonlimits
+            if(rotateAirbornLimits > 0)
+            {
+                // If themplayer is not grounded and a rotationlimit is not set, set limits
+                if (!rotationLimitSet) RotationLimit();
+                // Set rotationlimits
+                lookAngles.y = Mathf.Clamp(lookAngles.y, rotationLimit.x, rotationLimit.y);
+            }
         }
         // Set rotation for vertical and horizontal rotation
         lookRoot.localRotation = Quaternion.Euler(lookAngles.x, 0f, 0f);
